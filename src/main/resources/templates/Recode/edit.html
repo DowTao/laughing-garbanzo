@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:tx="http://www.thymeleaf.org">
+<head>
+<meta charset=utf-8>
+<title>Insert title here</title>
+<script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+<style type="text/css">
+	.rd{
+		margin-right:30px;
+	}
+</style>
+<script type="text/javascript">
+	function save() {
+		amount = 0;
+		$(".sub").each(function(){
+			ok = $(this).attr("ok");
+			val = $("[name='" + $(this).attr("rname") + "']:checked").val();
+			if(typeof(val) == "undefined")
+				val = "";
+			if(ok == val) amount += 10;
+		});	
+		$("[name=point]").val(amount)
+		$("[type=radio]").attr("disabled","disabled");
+		$("form")[0].submit();
+	}
+</script>
+</head>
+<body>
+	<form action="save" method="post">
+		<input type="hidden" name="cmd" value="edit">
+		姓名:<input name="name"><br>
+		<input type="hidden" name="point"><br>
+		<div class="testlist" th:each = "obj:${list}">
+				<div class="sub" th:ok = ${obj.result} rname="a" th:attrappend = "rname = ${obj.id}">
+					<div th:text="${obj.title}"></div>
+					<div th:text="${obj.options}"></div>
+					<div>
+						<label for="a1_" th:attrappend = "for = ${obj.id}">A</label><input id="a1_" class="rd" type="radio" name="a" th:attrappend = "id=${obj.id},name=${obj.id}" value="A">
+						<label for="a2_" th:attrappend = "for = ${obj.id}">B</label><input id="a2_" class="rd" type="radio" name="a" th:attrappend = "id=${obj.id},name=${obj.id}" value="B">
+						<label for="a3_" th:attrappend = "for = ${obj.id}">C</label><input id="a3_" class="rd" type="radio" name="a" th:attrappend = "id=${obj.id},name=${obj.id}" value="C">
+						<label for="a4_" th:attrappend = "for = ${obj.id}">D</label><input id="a4_" class="rd" type="radio" name="a" th:attrappend = "id=${obj.id},name=${obj.id}" value="D">
+					</div>
+				</div>
+		</div>
+		<div>
+			<button type="button" onclick="save(this);">交卷</button>
+		</div>
+	</form>
+</body>
+</html>

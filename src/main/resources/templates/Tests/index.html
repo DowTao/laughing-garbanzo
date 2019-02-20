@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:tx="http://www.thymeleaf.org">
+<head>
+<meta charset=utf-8>
+<title>Insert title here</title>
+</head>
+<body>
+<button onclick="location.href='edit'">新增</button>
+<button onclick="window.location.href='../index.html'">返回首页</button>
+<table border="1">
+	<tr>
+		<td>标题</td><td>选项</td><td>正解</td>
+	</tr>
+	<tr th:each = "t:${list}">
+		<td th:text = "${t.title}"></td>
+		<td th:text = "${t.options}"></td>
+		<td th:text = "${t.result}"></td>
+	</tr>
+</table>
+</body>
+</html>

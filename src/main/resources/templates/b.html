@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:tx="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<table>
+	<tr><td>标题</td><td>选项</td><td>正解</td></tr>
+	<tr th:each="prod : ${list}">
+        <td th:text="${prod.title}"></td>
+        <td th:text="${prod.options}"></td>
+        <td th:text="${prod.result}"></td>
+ 	</tr>
+</table>	
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:tx="http://www.thymeleaf.org">
+<head>
+<meta charset=utf-8>
+<title>Insert title here</title>
+</head>
+<body>
+<button onclick="window.location.href='../index.html'">返回首页</button>
+	<table border="1">
+	<tr>
+		<td>姓名</td><td>日期</td><td>得分</td>
+	</tr>
+	<tr th:each = "t:${list}">
+		<td th:text = "${t.name}"></td>
+		<td th:text = "${t.date}"></td>
+		<td th:text = "${t.point}"></td>
+	</tr>
+</table>
+</body>
+</html>
